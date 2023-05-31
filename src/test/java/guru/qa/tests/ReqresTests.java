@@ -35,7 +35,7 @@ public class ReqresTests extends TestBase {
     @DisplayName("You can create user with success fields name and job")
     @Test
     void successCreateUser() {
-        String createdUserBody = "{\n" +
+        String userBody = "{\n" +
                 "    \"name\": \"Alex\",\n" +
                 "    \"job\": \"tester\"\n" +
                 "}";
@@ -44,7 +44,7 @@ public class ReqresTests extends TestBase {
                 .log().uri()
                 .log().body()
                 .contentType(JSON)
-                .body(createdUserBody)
+                .body(userBody)
                 .post("/users")
                 .then()
                 .log().status()
@@ -58,7 +58,7 @@ public class ReqresTests extends TestBase {
     @DisplayName("You can create user with empty fields name and job")
     @Test
     void createUserWithoutData() {
-        String createUserWithoutData = "{\n" +
+        String userBodyWithoutData = "{\n" +
                 "    \"name\": \"\",\n" +
                 "    \"job\": \"\"\n" +
                 "}";
@@ -67,7 +67,7 @@ public class ReqresTests extends TestBase {
                 .log().uri()
                 .log().body()
                 .contentType(JSON)
-                .body(createUserWithoutData)
+                .body(userBodyWithoutData)
                 .post("/users")
                 .then()
                 .log().status()
@@ -81,7 +81,7 @@ public class ReqresTests extends TestBase {
     @DisplayName("You can update existing user")
     @Test
     void updateUserData() {
-        String createUserWithoutData = "{\n" +
+        String updateUserBody = "{\n" +
                 "    \"name\": \"Rick Sanchez\",\n" +
                 "    \"job\": \"crazy scientist\"\n" +
                 "}";
@@ -90,7 +90,7 @@ public class ReqresTests extends TestBase {
                 .log().uri()
                 .log().body()
                 .contentType(JSON)
-                .body(createUserWithoutData)
+                .body(updateUserBody)
                 .patch("/users/2")
                 .then()
                 .log().status()
